@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOGO Product Options</title>
+ <style>
+  
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  padding: 20px;
+  color: #333;
+}
+
+.container { /*  Centers the main content and adds styling for a card-like appearance with padding, border-radius, shadow, and flexible layout for children.
+  */
+  max-width: 450px;
+  margin: auto;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.header {  /* Styles the main header*/
+  text-align: center;
+  font-size: 24px;
+  color: #FF6B82;
+  margin-bottom: 20px;
+}
+
+.product-option {   /* 1 &3  Unit Option */
+  display: flex;
+  align-items: center;
+  padding: 20px 20px;
+  border: 1px solid #e7e7e7;
+  border-radius: 0px;
+  background-color: white;
+  max-width: 400px;
+}
+
+input[type="radio"] {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #FF6B82;
+  border-radius: 50%;
+  margin-right: 10px;
+  position: relative;
+  cursor: pointer;
+}
+
+input[type="radio"]:checked::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  background-color: #FF6B82;
+  border-radius: 50%;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+}
+
+.option-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.left-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.unit-container {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* Space between unit-title and discount-tag */
+}
+
+.unit-title {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+}
+
+.discount-tag {
+  background-color: #FF6B82;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 0px;
+  margin-left: 7px;
+}
+.discount-tag2{
+  background-color: #FF6B82;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 0px;
+  margin-left: 3px;
+  margin-top: -18px;
+}
+
+.price-desc {
+  font-size: 12px;
+  color: #888;
+  margin-top: 3px;
+}
+
+.right-details {
+  text-align: end;
+  display: flex;
+  flex-direction: column;
+}
+
+.final-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.original-price {
+  font-size: 12px;
+  text-decoration: line-through;
+  color: #aaa;
+  margin-right: 20px;
+}
+
+
+.card {     /* 3 Unit Option */
+  border: 2px solid #ffb6c1;
+  border-radius: 0px;
+  padding: 15px;
+  max-width: 400px;
+  position: relative;
+  background: #fff9fa;
+}
+
+.badge { /*  badge with a bold background and fixed position at the top right of the card. */
+  background-color: #ff6584;
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 0;
+  position: absolute;
+  top: -8px;
+  right: 3px;
+}
+
+.radio-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Align left and right */
+  margin-bottom: 10px;
+}
+
+.radio-btn label {
+  font-weight: bold;
+}
+
+.discount {
+  background: #ff6584;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 0;
+  margin-left: 7px;
+}
+
+.price {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: end;
+  margin-left: 10px;
+  margin-top: 8px 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.old-price {
+  font-size: 12px;
+  color: #aaa;
+  text-decoration: line-through;
+  margin-right: 20px;
+}
+
+.dropdown-section {
+  margin: 10px 0;
+}
+
+.dropdown-section select {
+  padding: 5px;
+  width: 70px;
+  margin-right: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+input[type="radio"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+.total-section {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  
+}
+.total-price{
+  margin-left: 165px;
+}
+
+.free-delivery {
+  color: #FF6B82;
+}
+
+.add-to-cart {
+  display: block;
+  width: 98%;
+  background-color: #FF6B82;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  margin-right: 15px;
+}
+
+.add-to-cart:hover {
+  background-color: #ff556f;
+}
+
+.footer {
+  margin-right: 15px;
+  text-align: end;
+  color: #aaa;
+  font-size: 12px;
+  margin-top: -10px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+  position: relative;
+}
+
+.header::before,
+.header::after {
+  content: "";
+  flex: 1;
+  border-bottom: 2px solid #c8c8c8; /* Underline style */
+  margin: 0 10px; 
+
+.header::after {
+  content: "";
+}
+ </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <h2 class="header">YAY! It’s BOGO</h2>
+
+    <!-- 1 Unit Option -->
+    <div class="product-option">
+      <input type="radio" id="unit-1" name="product-option" checked>
+      <label for="unit-1" class="option-content">
+        <div class="left-details">
+          <div class="unit-container">
+            <span class="unit-title">1 Unit</span>
+            <span class="discount-tag">10% Off</span>
+          </div>
+          <p class="price-desc">Standard Price</p>
+        </div>
+        <div class="right-details">
+          <span class="final-price">$10.00 USD</span>
+          <span class="original-price">$24.00 USD</span>
+        </div>
+      </label>
+    </div>
+
+    <!-- 2 Unit Option - Most Popular -->
+    <div class="card">
+      <div class="badge">MOST POPULAR</div>
+      <div class="radio-btn">
+        <div>
+          <input type="radio" name="unit" id="unit1" onclick="hideDropdowns()">
+          <label for="unit1">2 Unit</label>
+          <span class="discount">20% Off</span>
+        </div>
+        <div class="price">$18.00 USD <span class="old-price">$24.00 USD</span></div>
+      </div>
+  
+      <div id="dropdowns" class="dropdown-section">
+        <div>
+          <label>#1</label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+          </select>
+          <select>
+            <option>Black</option>
+            <option>Blue</option>
+            <option>Red</option>
+          </select>
+        </div>
+        <div>
+          <label>#2</label>
+          <select>
+            <option>S</option>
+            <option>M</option>
+            <option>L</option>
+          </select>
+          <select>
+            <option>Colour</option>
+            <option>Black</option>
+            <option>Blue</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  
+    <!-- 3 Unit Option -->
+    <div class="product-option">
+      <input type="radio" id="unit-3" name="product-option">
+      <label for="unit-3" class="option-content">
+        <div class="left-details">
+          <div class="unit-container">
+            <span class="unit-title">3 Unit</span>
+            <span class="discount-tag2">30% Off</span>
+          </div>
+        </div>
+        <div class="right-details">
+          <span class="final-price">$24.00 USD</span>
+          <span class="original-price">$24.00 USD</span>
+        </div>
+      </label>
+    </div>
+
+    <!-- Free Delivery and Total -->
+    <div class="footer-section">
+      <span class="free-delivery">Free Delivery</span>
+      <span class="total-price">Total : $18.00 USD</span>
+    </div>
+
+    <!-- Add to Cart Button -->
+    <button class="add-to-cart">+ Add to Cart</button>
+    <p class="footer">@ Powered by Pumper</p>
+  </div>
+
+</body>
+<script>
+  function hideDropdowns() {
+    document.getElementById('dropdowns').classList.add('hidden');  <!--Hides the dropdown menus.-->
+  }
+</script>
+</html>
+
+
+
+
+
+
